@@ -1,3 +1,6 @@
+// HistActivity.java
+//
+// History
 package com.example.accordionwidget;
 
 import com.example.accordionwidget.R;
