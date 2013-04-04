@@ -1,3 +1,5 @@
+// This is MainActivity 4/4/13
+
 package com.example.accordionwidget;
 
 import com.example.accordionwidget.R;
