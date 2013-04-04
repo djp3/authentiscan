@@ -1,0 +1,226 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".History"
+     android:background="#002244"     >
+
+
+<TableLayout
+    android:id="@+id/tableLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:padding="10dip"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:stretchColumns="0,1,2" >
+    
+    <TableRow
+        android:id="@+id/tableRow0"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal" >
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_span="6"
+            android:gravity="center"
+            android:text="Transactions"
+            android:textColor="#FFDE6C"
+            android:textSize="18dp"
+            android:textStyle="bold"  >
+        </TextView>
+    </TableRow>
+    
+    <TableRow
+    android:id="@+id/tableRow1"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/cell_gray"
+    android:gravity="center" >
+    <TextView
+        android:id="@+id/textview1a"
+		android:text="Date"
+		android:textColor="#000"
+		android:textSize="14dp"
+		android:textStyle="bold"
+		android:gravity="center" 
+		android:background="@drawable/cell_gray"	>
+	</TextView>
+	<TextView
+        android:id="@+id/textview2a"
+		android:text="Amount"
+		android:textColor="#000"
+		android:textSize="14dp"
+		android:textStyle="bold"
+		android:gravity="center"
+		android:background="@drawable/cell_gray" >
+	</TextView>
+	<TextView
+        android:id="@+id/textview3a"
+		android:text="Details"
+		android:textColor="#000"
+		android:textSize="14dp"
+		android:textStyle="bold"
+		android:gravity="center"
+		android:background="@drawable/cell_gray" >
+	</TextView>    
+    </TableRow>
+    
+    <TableRow
+    android:id="@+id/tableRow2"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFF" 
+    android:gravity="center" >
+    <TextView
+        android:id="@+id/textview1b"
+		android:text="3/19/2013"
+		android:textColor="#000"
+		android:textSize="12dp"
+		android:gravity="center" >
+	</TextView>
+	<TextView
+        android:id="@+id/textview2b"
+		android:text="10.00 BTC"
+		android:textColor="#000"
+		android:textSize="12dp"
+		android:gravity="center" >
+	</TextView>
+	<Button
+	    android:id="@+id/button1b"
+	    android:layout_width="0px"
+	    android:layout_weight="1"
+	    android:layout_height="wrap_content"
+	    android:text="More"
+	    android:textSize="12dp">
+	</Button>
+    </TableRow>
+    
+    <TableRow
+    android:id="@+id/tableRow3"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/cell_vary" 
+    android:gravity="center" >
+    <TextView
+        android:id="@+id/textview1c"
+		android:text="3/11/2013"
+		android:textColor="#000"
+		android:textSize="12dp"
+		android:gravity="center" >
+	</TextView>
+	<TextView
+        android:id="@+id/textview2c"
+		android:text="10.00 BTC"
+		android:textColor="#000"
+		android:textSize="12dp"
+		android:gravity="center" >
+	</TextView>
+	<Button
+	    android:id="@+id/button1c"
+	    android:layout_width="0px"
+	    android:layout_weight="1"
+	    android:layout_height="wrap_content"
+	    
+	    android:text="More"
+	    android:textSize="12dp">
+	</Button>
+    </TableRow>
+    
+     <TableRow
+    android:id="@+id/tableRow4"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFF" 
+    android:gravity="center" >
+    <TextView
+        android:id="@+id/textview1d"
+		android:text="3/1/2013"
+		android:textColor="#000"
+		android:textSize="12dp"
+		android:gravity="center" >
+	</TextView>
+	<TextView
+        android:id="@+id/textview2d"
+		android:text="20.00 BTC"
+		android:textColor="#000"
+		android:textSize="12dp"
+		android:gravity="center" >
+	</TextView>
+	<Button
+	    android:id="@+id/button1d"
+	    android:layout_width="0px"
+	    android:layout_weight="1"
+	    android:layout_height="wrap_content"
+	    
+	    android:text="More"
+	    android:textSize="12dp">
+	</Button>
+    </TableRow>
+
+    <TableRow
+    android:id="@+id/tableRow5"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/cell_vary" 
+    android:gravity="center" >
+    <TextView
+        android:id="@+id/textview1e"
+		android:text="3/1/2013"
+		android:textColor="#000"
+		android:textSize="12dp"
+		android:gravity="center" >
+	</TextView>
+	<TextView
+        android:id="@+id/textview2e"
+		android:text="1.00 BTC"
+		android:textColor="#000"
+		android:textSize="12dp"
+		android:gravity="center" >
+	</TextView>
+	<Button
+	    android:id="@+id/button1e"
+	    android:layout_width="0px"
+	    android:layout_weight="1"
+	    android:layout_height="wrap_content"
+	    
+	    android:text="More"
+	    android:textSize="12dp">
+	</Button>
+    </TableRow>
+ 
+</TableLayout>
+
+<LinearLayout 
+        xmlns:android="http://schemas.android.com/apk/res/android"
+    	android:layout_width="fill_parent" android:layout_height="fill_parent"
+    	android:orientation="vertical">
+    	
+    	<LinearLayout 
+    	    android:layout_width="wrap_content"
+        	android:layout_height="0dip"
+        	android:layout_weight="1"
+        	android:orientation="vertical">
+    	</LinearLayout>
+    	
+    	<LinearLayout 
+    	    android:layout_width="fill_parent"
+        	style="@android:style/ButtonBar" 
+        	android:layout_height="wrap_content"
+        	android:orientation="horizontal"
+        	android:gravity="center">
+
+	        <Button
+                    android:id="@+id/homeButton"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Home" >
+            </Button>
+
+    	</LinearLayout>
+    </LinearLayout>
+
+
+</RelativeLayout>

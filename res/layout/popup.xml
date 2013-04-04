@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" 
+    android:background="@android:color/background_light">
+ <LinearLayout 
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:orientation="vertical" 
+     android:layout_margin="1dp"
+     android:background="@android:color/darker_gray">
+     >
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_margin="20dip"
+          android:text="@string/step1popup"
+          android:textAppearance="?android:attr/textAppearanceLarge" />
+      
+      <ImageView
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_gravity="center"
+		    android:background="#000000"
+		    android:gravity="center"
+		    android:padding="5dp"
+		    android:src="@drawable/nfcicon" />	
+      <Button
+          android:id="@+id/dismiss"
+          android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="10dip"
+          android:text="@string/next" />
+      </LinearLayout>
+</LinearLayout>
