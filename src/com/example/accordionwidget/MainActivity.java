@@ -21,11 +21,12 @@ public class MainActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		addListenerOnButton();
+	//	addListenerOnButton();
 
 		Button btnNFC = (Button) findViewById(R.id.btnNFC);
 		Button btnVISUAL = (Button) findViewById(R.id.btnVISUAL);
 		Button btnNETWORK = (Button) findViewById(R.id.btnNETWORK);
+		Button btnRESULT = (Button) findViewById(R.id.btnRESULT);
 
 		final View panelNFC = findViewById(R.id.panelNfc);
 		panelNFC.setVisibility(View.GONE);
@@ -35,6 +36,9 @@ public class MainActivity extends Activity {
 
 		View panelNetwork = findViewById(R.id.panelNetwork);
 		panelNetwork.setVisibility(View.GONE);
+		
+		View panelResult = findViewById(R.id.panelResult);
+		panelResult.setVisibility(View.GONE);
 		
 		/* STEP 1*/
 		btnNFC.setOnClickListener(new OnClickListener() {
@@ -49,6 +53,9 @@ public class MainActivity extends Activity {
 
 				View panelPrivacy = findViewById(R.id.panelNetwork);
 				panelPrivacy.setVisibility(View.GONE);
+				
+				View panelResult = findViewById(R.id.panelResult);
+				panelResult.setVisibility(View.GONE);
 
 			}
 		});
@@ -86,6 +93,9 @@ public class MainActivity extends Activity {
 
 						View panelPrivacy = findViewById(R.id.panelNetwork);
 						panelPrivacy.setVisibility(View.GONE);
+						
+						View panelResult = findViewById(R.id.panelResult);
+						panelResult.setVisibility(View.GONE);
 					}
 				});
                popupWindow.showAsDropDown(btnOpenPopup, 50, -30);
@@ -101,10 +111,18 @@ public class MainActivity extends Activity {
 
 				View panelSettings = findViewById(R.id.panelVisual);
 				panelSettings.setVisibility(View.VISIBLE);
+				
+				View panelSnappic1 = findViewById(R.id.panelSnappic1);
+				panelSnappic1.setVisibility(View.VISIBLE);
+				
+				View panelSnappic2 = findViewById(R.id.panelSnappic2);
+				panelSnappic2.setVisibility(View.GONE);
 
 				View panelPrivacy = findViewById(R.id.panelNetwork);
 				panelPrivacy.setVisibility(View.GONE);
-
+				
+				View panelResult = findViewById(R.id.panelResult);
+				panelResult.setVisibility(View.GONE);
 			}
 		});	
 		final Button snapPic = (Button) findViewById(R.id.snappic);
@@ -133,6 +151,9 @@ public class MainActivity extends Activity {
 
 				View panelPrivacy = findViewById(R.id.panelNetwork);
 				panelPrivacy.setVisibility(View.VISIBLE);  
+				
+				View panelResult = findViewById(R.id.panelResult);
+				panelResult.setVisibility(View.GONE);
 		}});
 
 		/* STEP 3*/
@@ -148,6 +169,9 @@ public class MainActivity extends Activity {
 
 				View panelPrivacy = findViewById(R.id.panelNetwork);
 				panelPrivacy.setVisibility(View.VISIBLE);
+				
+				View panelResult = findViewById(R.id.panelResult);
+				panelResult.setVisibility(View.GONE);
 
 			}
 		});
@@ -173,30 +197,33 @@ public class MainActivity extends Activity {
 
 				View panelPrivacy = findViewById(R.id.panelNetwork);
 				panelPrivacy.setVisibility(View.GONE);  
+				
+				View panelResult = findViewById(R.id.panelResult);
+				panelResult.setVisibility(View.GONE);
 		}});
 		
+		/* STEP 4 */
+		btnRESULT.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// DO STUFF
+				View panelProfile = findViewById(R.id.panelNfc);
+				panelProfile.setVisibility(View.GONE);
+
+				View panelSettings = findViewById(R.id.panelVisual);
+				panelSettings.setVisibility(View.GONE);
+
+				View panelPrivacy = findViewById(R.id.panelNetwork);
+				panelPrivacy.setVisibility(View.GONE);
+				
+				View panelResult = findViewById(R.id.panelResult);
+				panelResult.setVisibility(View.VISIBLE);
+
+			}
+		});	
+	
 		
 
-	}
-	
-	public void addListenerOnButton() {
-		 
-		final Context context = this;
-
-		Button btnHist = (Button) findViewById(R.id.historyButton);
- 
-		btnHist.setOnClickListener(new OnClickListener() {
- 
-			@Override
-			public void onClick(View arg0) {
- 
-			    Intent intent = new Intent(context, HistActivity.class);
-                            startActivity(intent);   
- 
-			}
- 
-		});
- 
 	}
 
 }
