@@ -137,6 +137,26 @@ public class MainActivity extends Activity {
 				View panelSnappic2 = findViewById(R.id.panelSnappic2);
 				panelSnappic2.setVisibility(View.VISIBLE);     
 		}});
+		
+		final Button visualScanSkip = (Button) findViewById(R.id.skip);
+		visualScanSkip.setOnClickListener(new Button.OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				// add view for button
+				View panelProfile = findViewById(R.id.panelNfc);
+				panelProfile.setVisibility(View.GONE);
+
+				View panelSettings = findViewById(R.id.panelVisual);
+				panelSettings.setVisibility(View.GONE);
+
+				View panelPrivacy = findViewById(R.id.panelNetwork);
+				panelPrivacy.setVisibility(View.VISIBLE);  
+				
+				View panelResult = findViewById(R.id.panelResult);
+				panelResult.setVisibility(View.GONE);
+		}});
+
 		final Button visualScanContinue = (Button) findViewById(R.id.next);
 		visualScanContinue.setOnClickListener(new Button.OnClickListener() {
 
@@ -155,7 +175,7 @@ public class MainActivity extends Activity {
 				View panelResult = findViewById(R.id.panelResult);
 				panelResult.setVisibility(View.GONE);
 		}});
-
+		
 		/* STEP 3*/
 		btnNETWORK.setOnClickListener(new OnClickListener() {
 			@Override

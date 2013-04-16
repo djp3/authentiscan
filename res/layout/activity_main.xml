@@ -190,31 +190,6 @@
                 android:gravity="center"
                 android:text="@string/note"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
-
-            <LinearLayout
-                android:id="@+id/nwkButtons"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="#FFFFFFFF"
-                android:orientation="horizontal" >
-
-                <Button
-                    android:id="@+id/accept"
-                    style="?android:attr/buttonStyleSmall"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="left"
-                    android:text="@string/accept" />
-
-                <Button
-                    android:id="@+id/reject"
-                    style="?android:attr/buttonStyleSmall"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:text="@string/reject" />
-            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
     
@@ -236,36 +211,33 @@
         android:orientation="vertical" >
         
         <LinearLayout
-            android:id="@+id/panelNwk"
+            android:id="@+id/panelResultChild"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:background="#FFFFFFFF"
             android:orientation="vertical" >
 
-            <ImageView
-                android:id="@+id/step3pic"
+            <EditText
+                android:id="@+id/denomination"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:gravity="center"
-                android:src="@drawable/step3pic" />
+                android:ems="10"
+                android:inputType="number" 
+                android:text="@string/PLACEHOLDER">
 
-            <TextView
-                android:id="@+id/success"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="@string/success" />
+            </EditText>
 
-            <TextView
-                android:id="@+id/note"
+            <EditText
+                android:id="@+id/scan_note"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:gravity="center"
-                android:text="@string/note"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:ems="10"
+                android:inputType="textMultiLine|number"
+                android:text="@string/PLACEHOLDER" >
+
+            </EditText>
 
             <LinearLayout
                 android:id="@+id/nwkButtons"
@@ -291,6 +263,15 @@
                     android:gravity="right"
                     android:text="@string/reject" />
             </LinearLayout>
+			
+			<Button
+                android:id="@+id/reset"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/reset" />
+            
         </LinearLayout>
     	
     </LinearLayout>
