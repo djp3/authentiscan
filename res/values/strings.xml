@@ -19,7 +19,8 @@
     <string name="visual_scan">2. Visual Scan</string>
     <string name="step2">[INSERT PICTURE]</string>
     <string name="snappic">SNAP PICTURE!</string>
-    <string name="entermanually">Enter serial number</string>
+    <string name="entermanually">Input serial number:</string>
+    <string name="enter">Enter</string>
     <string name="skip">Skip</string>
     <string name="serialnumberlabel">Serial Number:</string>
     <string name="serialnumber">1AC3XF9115OSL0L</string>
@@ -27,12 +28,11 @@
     
     <string name="network_scan">3. Network Scan</string>
     <string name="success">Validation complete!</string>
-    <string name="note">This currency is safe to accept.</string>
+	
+	<string name="result_button">4. Result</string>
 	<string name="accept">Accept</string>
 	<string name="reject">Reject</string>
 	<string name="details">Details</string>
-	
-	<string name="result_button">4. Result</string>
 	
 	<string name="desc"></string>
 	
