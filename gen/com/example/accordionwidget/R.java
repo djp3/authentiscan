@@ -15,16 +15,19 @@ public final class R {
         public static final int gray=0x7f040001;
     }
     public static final class drawable {
-        public static final int button=0x7f020000;
-        public static final int cell_gray=0x7f020001;
-        public static final int cell_vary=0x7f020002;
-        public static final int greenbutton=0x7f020003;
-        public static final int ic_launcher=0x7f020004;
-        public static final int nfcicon=0x7f020005;
-        public static final int redbutton=0x7f020006;
-        public static final int step2pic=0x7f020007;
-        public static final int step2test=0x7f020008;
-        public static final int step3pic=0x7f020009;
+        public static final int background=0x7f020000;
+        public static final int button=0x7f020001;
+        public static final int cell_gray=0x7f020002;
+        public static final int cell_vary=0x7f020003;
+        public static final int greenbutton=0x7f020004;
+        public static final int ic_launcher=0x7f020005;
+        public static final int luci=0x7f020006;
+        public static final int luci2=0x7f020007;
+        public static final int nfcicon=0x7f020008;
+        public static final int redbutton=0x7f020009;
+        public static final int step2pic=0x7f02000a;
+        public static final int step2test=0x7f02000b;
+        public static final int step3pic=0x7f02000c;
     }
     public static final class id {
         public static final int accept=0x7f080034;
@@ -37,13 +40,14 @@ public final class R {
         public static final int button1d=0x7f080012;
         public static final int button1e=0x7f080016;
         public static final int denomination=0x7f080031;
-        public static final int dismiss=0x7f080037;
+        public static final int dismiss=0x7f080039;
         public static final int enter=0x7f080022;
         public static final int entermanually=0x7f080020;
         public static final int entrytext=0x7f080021;
         public static final int homeButton=0x7f080017;
+        public static final int image=0x7f080037;
         public static final int label=0x7f080025;
-        public static final int menu_settings=0x7f080038;
+        public static final int menu_settings=0x7f08003a;
         public static final int next=0x7f080027;
         public static final int number=0x7f080026;
         public static final int nwkButtons=0x7f080033;
@@ -55,6 +59,7 @@ public final class R {
         public static final int panelSnappic1=0x7f08001e;
         public static final int panelSnappic2=0x7f080024;
         public static final int panelVisual=0x7f08001d;
+        public static final int progressBar1=0x7f080038;
         public static final int reject=0x7f080035;
         public static final int reset=0x7f080036;
         public static final int scan=0x7f08001b;
@@ -88,7 +93,8 @@ public final class R {
     public static final class layout {
         public static final int activity_history=0x7f030000;
         public static final int activity_main=0x7f030001;
-        public static final int popup=0x7f030002;
+        public static final int activity_splash=0x7f030002;
+        public static final int popup=0x7f030003;
     }
     public static final class menu {
         public static final int activity_main=0x7f070000;
