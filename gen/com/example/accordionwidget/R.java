@@ -27,43 +27,45 @@ public final class R {
         public static final int step3pic=0x7f020009;
     }
     public static final class id {
-        public static final int accept=0x7f080034;
-        public static final int btnNETWORK=0x7f080028;
-        public static final int btnNFC=0x7f080018;
-        public static final int btnRESULT=0x7f08002e;
-        public static final int btnVISUAL=0x7f08001c;
+        public static final int accept=0x7f080036;
+        public static final int btnNETWORK=0x7f08002a;
+        public static final int btnNFC=0x7f080019;
+        public static final int btnRESULT=0x7f080030;
+        public static final int btnVISUAL=0x7f08001d;
         public static final int button1b=0x7f08000a;
         public static final int button1c=0x7f08000e;
         public static final int button1d=0x7f080012;
         public static final int button1e=0x7f080016;
-        public static final int denomination=0x7f080031;
-        public static final int dismiss=0x7f080037;
-        public static final int enter=0x7f080022;
-        public static final int entermanually=0x7f080020;
-        public static final int entrytext=0x7f080021;
+        public static final int camerapreview=0x7f08001f;
+        public static final int denomination=0x7f080033;
+        public static final int dismiss=0x7f080039;
+        public static final int enter=0x7f080024;
+        public static final int entermanually=0x7f080022;
+        public static final int entrytext=0x7f080023;
         public static final int homeButton=0x7f080017;
-        public static final int label=0x7f080025;
-        public static final int menu_settings=0x7f080038;
-        public static final int next=0x7f080027;
-        public static final int number=0x7f080026;
-        public static final int nwkButtons=0x7f080033;
-        public static final int panelNetwork=0x7f080029;
-        public static final int panelNfc=0x7f080019;
-        public static final int panelNwk=0x7f08002a;
-        public static final int panelResult=0x7f08002f;
-        public static final int panelResultChild=0x7f080030;
-        public static final int panelSnappic1=0x7f08001e;
-        public static final int panelSnappic2=0x7f080024;
-        public static final int panelVisual=0x7f08001d;
-        public static final int reject=0x7f080035;
-        public static final int reset=0x7f080036;
-        public static final int scan=0x7f08001b;
-        public static final int scan_note=0x7f080032;
-        public static final int skip=0x7f080023;
-        public static final int snappic=0x7f08001f;
-        public static final int step1=0x7f08001a;
-        public static final int step3pic=0x7f08002b;
-        public static final int success=0x7f08002c;
+        public static final int label=0x7f080027;
+        public static final int menu_settings=0x7f08003a;
+        public static final int next=0x7f080029;
+        public static final int number=0x7f080028;
+        public static final int nwkButtons=0x7f080035;
+        public static final int panelNetwork=0x7f08002b;
+        public static final int panelNfc=0x7f08001a;
+        public static final int panelNwk=0x7f08002c;
+        public static final int panelResult=0x7f080031;
+        public static final int panelResultChild=0x7f080032;
+        public static final int panelSnappic1=0x7f080020;
+        public static final int panelSnappic2=0x7f080026;
+        public static final int panelVisual=0x7f08001e;
+        public static final int reject=0x7f080037;
+        public static final int reset=0x7f080038;
+        public static final int scan=0x7f08001c;
+        public static final int scan_note=0x7f080034;
+        public static final int scrollView=0x7f080018;
+        public static final int skip=0x7f080025;
+        public static final int snappic=0x7f080021;
+        public static final int step1=0x7f08001b;
+        public static final int step3pic=0x7f08002d;
+        public static final int success=0x7f08002e;
         public static final int tableLayout1=0x7f080000;
         public static final int tableRow0=0x7f080001;
         public static final int tableRow1=0x7f080003;
@@ -71,7 +73,7 @@ public final class R {
         public static final int tableRow3=0x7f08000b;
         public static final int tableRow4=0x7f08000f;
         public static final int tableRow5=0x7f080013;
-        public static final int temporaryskip=0x7f08002d;
+        public static final int temporaryskip=0x7f08002f;
         public static final int textView11=0x7f080002;
         public static final int textview1a=0x7f080004;
         public static final int textview1b=0x7f080008;
@@ -130,11 +132,6 @@ public final class R {
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     
-
-            Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
-        
 
         Base application theme for API 11+. This theme completely replaces
         AppBaseTheme from res/values/styles.xml on API 11+ devices.

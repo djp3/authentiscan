@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/gray"
         android:orientation="vertical" >
+
         <Button
             android:id="@+id/btnNFC"
             style="@style/ButtonText"
@@ -61,13 +65,12 @@
             android:background="#FFFFFFFF"
             android:orientation="vertical" >
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <SurfaceView
+                android:id="@+id/camerapreview"
+                android:layout_width="fill_parent"
+                android:layout_height="200dp"
                 android:layout_gravity="center"
-                android:contentDescription="@string/desc"
-                android:gravity="center"
-                android:src="@drawable/step2test" />
+                android:gravity="center" />
 
             <LinearLayout
                 android:id="@+id/panelSnappic1"
@@ -296,4 +299,4 @@
         </LinearLayout>
     </LinearLayout>
 
-</ScrollView>
+</LinearLayout>

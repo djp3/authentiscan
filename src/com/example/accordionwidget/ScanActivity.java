@@ -1,9 +1,14 @@
 package com.example.accordionwidget;
 
+import java.io.IOException;
+
 import com.example.accordionwidget.R;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
+import android.view.SurfaceHolder;
+import android.view.SurfaceHolder.Callback;
+import android.view.SurfaceView;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -13,14 +18,36 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.PopupWindow;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.PixelFormat;
+import android.hardware.Camera;
+import android.hardware.Camera.Parameters;
+import android.hardware.Camera.PictureCallback;
+import android.hardware.Camera.ShutterCallback;
 
-public class ScanActivity extends Activity {
+public class ScanActivity extends Activity implements SurfaceHolder.Callback {
+	
+	private Camera camera;
+	private SurfaceView surfaceView;
+	private SurfaceHolder surfaceHolder;
+	private boolean previewing = false;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_scan);
 	//	addListenerOnButton();
+		
+		getWindow().setFormat(PixelFormat.UNKNOWN);
+		surfaceView = (SurfaceView) findViewById(R.id.camerapreview);
+		surfaceHolder = surfaceView.getHolder();
+		surfaceHolder.addCallback(this);
+		surfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
+
+		// controlInflater = LayoutInflater.from(getBaseContext());
+		// View viewControl = controlInflater.inflate(R.layout.control, null);
 
 		Button btnNFC = (Button) findViewById(R.id.btnNFC);
 		btnNFC.setEnabled(false);
@@ -101,6 +128,63 @@ public class ScanActivity extends Activity {
 						
 						View panelResult = findViewById(R.id.panelResult);
 						panelResult.setVisibility(View.GONE);
+						
+						if (previewing) {
+							camera.stopPreview();
+							previewing = false;
+						}
+
+						if (camera != null) {
+							try {
+								camera.setPreviewDisplay(surfaceHolder);
+								camera.startPreview();
+								previewing = true;
+							} catch (IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						}
+						
+						final ShutterCallback myShutterCallback = new ShutterCallback() {
+
+							@Override
+							public void onShutter() {
+								// TODO Auto-generated method stub
+
+							}
+						};
+
+						final PictureCallback myPictureCallback_RAW = new PictureCallback() {
+
+							@Override
+							public void onPictureTaken(byte[] arg0, Camera arg1) {
+								// TODO Auto-generated method stub
+
+							}
+						};
+
+						final PictureCallback myPictureCallback_JPG = new PictureCallback() {
+
+							@Override
+							public void onPictureTaken(byte[] arg0, Camera arg1) {
+								// TODO Auto-generated method stub
+								Bitmap bitmapPicture = BitmapFactory.decodeByteArray(arg0, 0,
+										arg0.length);
+							}
+						};
+						
+						Button buttonTakePicture = (Button) findViewById(R.id.snappic);
+						buttonTakePicture.setOnClickListener(new Button.OnClickListener() {
+
+							@Override
+							public void onClick(View arg0) {
+								// TODO Auto-generated method stub
+								camera.takePicture(myShutterCallback, myPictureCallback_RAW,
+										myPictureCallback_JPG);
+
+							}
+						});
+						
 					}
 				});
                popupWindow.showAsDropDown(btnOpenPopup, 50, -30);
@@ -132,7 +216,11 @@ public class ScanActivity extends Activity {
 			}
 		});	
 */
-		final Button snapPic = (Button) findViewById(R.id.snappic);
+
+		
+		
+/*		OLD SNAPPIC (automatically shows serial number)
+ * 		final Button snapPic = (Button) findViewById(R.id.snappic);
 		snapPic.setOnClickListener(new Button.OnClickListener() {
 
 			@Override
@@ -144,7 +232,7 @@ public class ScanActivity extends Activity {
 				View panelSnappic2 = findViewById(R.id.panelSnappic2);
 				panelSnappic2.setVisibility(View.VISIBLE);     
 		}});
-		
+*/		
 		final Button visualScanEnter = (Button) findViewById(R.id.enter);
 		visualScanEnter.setOnClickListener(new Button.OnClickListener() {
 
@@ -288,6 +376,7 @@ public class ScanActivity extends Activity {
 				
 				View panelResult = findViewById(R.id.panelResult);
 				panelResult.setVisibility(View.GONE);
+				
 		}});
 		
 		/* STEP 4 */
@@ -313,6 +402,57 @@ public class ScanActivity extends Activity {
 */	
 		
 
+	}
+
+	@Override
+	public void surfaceChanged(SurfaceHolder holder, int format, int width,
+			int height) {
+		// TODO Auto-generated method stub
+		if (previewing) {
+			camera.stopPreview();
+			previewing = false;
+		}
+
+		if (camera != null) {
+			try {
+				camera.setPreviewDisplay(surfaceHolder);
+				camera.startPreview();
+				previewing = true;
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+	}
+
+	@Override
+	public void surfaceCreated(SurfaceHolder holder) {
+		// TODO Auto-generated method stub
+		camera = Camera.open();
+		Parameters params = camera.getParameters();
+
+		if (this.getResources().getConfiguration().orientation != Configuration.ORIENTATION_LANDSCAPE) {
+			params.set("orientation", "portrait");
+			camera.setDisplayOrientation(90);
+		}
+
+//		try {
+//			camera.setPreviewDisplay(holder);
+//			camera.startPreview();
+//		} catch (IOException exception) {
+//			camera.release();
+//			camera = null;
+//		}
+	}
+
+	@Override
+	public void surfaceDestroyed(SurfaceHolder holder) {
+		// TODO Auto-generated method stub
+		camera.stopPreview();
+		camera.release();
+		camera = null;
+		previewing = false;
 	}
 
 }
