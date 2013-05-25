@@ -49,6 +49,7 @@ public final class R {
         public static final int label=0x7f080025;
         public static final int menu_settings=0x7f08003a;
         public static final int next=0x7f080027;
+        public static final int nfcnext=0x7f08001b;
         public static final int number=0x7f080026;
         public static final int nwkButtons=0x7f080033;
         public static final int panelNetwork=0x7f080029;
@@ -62,7 +63,6 @@ public final class R {
         public static final int progressBar1=0x7f080038;
         public static final int reject=0x7f080035;
         public static final int reset=0x7f080036;
-        public static final int scan=0x7f08001b;
         public static final int scan_note=0x7f080032;
         public static final int skip=0x7f080023;
         public static final int snappic=0x7f08001f;
@@ -100,35 +100,37 @@ public final class R {
         public static final int activity_main=0x7f070000;
     }
     public static final class string {
-        public static final int PLACEHOLDER=0x7f05001c;
-        public static final int about=0x7f050006;
-        public static final int accept=0x7f050018;
+        public static final int PLACEHOLDER=0x7f05001e;
+        public static final int about=0x7f050007;
+        public static final int accept=0x7f05001a;
         public static final int app_name=0x7f050000;
-        public static final int desc=0x7f05001b;
-        public static final int details=0x7f05001a;
-        public static final int enter=0x7f050010;
-        public static final int entermanually=0x7f05000f;
+        public static final int desc=0x7f05001d;
+        public static final int details=0x7f05001c;
+        public static final int enter=0x7f050012;
+        public static final int entermanually=0x7f050011;
         public static final int hello_world=0x7f050001;
-        public static final int history=0x7f050005;
-        public static final int menu=0x7f050003;
+        public static final int history=0x7f050006;
+        public static final int menu=0x7f050004;
         public static final int menu_settings=0x7f050002;
-        public static final int network_scan=0x7f050015;
-        public static final int next=0x7f050014;
-        public static final int nfc_scan=0x7f050007;
-        public static final int ok=0x7f05000b;
-        public static final int reject=0x7f050019;
-        public static final int reset=0x7f050004;
-        public static final int result_button=0x7f050017;
-        public static final int scan=0x7f050009;
-        public static final int serialnumber=0x7f050013;
-        public static final int serialnumberlabel=0x7f050012;
-        public static final int skip=0x7f050011;
-        public static final int snappic=0x7f05000e;
-        public static final int step1=0x7f050008;
-        public static final int step1popup=0x7f05000a;
-        public static final int step2=0x7f05000d;
-        public static final int success=0x7f050016;
-        public static final int visual_scan=0x7f05000c;
+        public static final int network_scan=0x7f050017;
+        public static final int next=0x7f050016;
+        public static final int nfc_next=0x7f05000a;
+        public static final int nfc_scan=0x7f050008;
+        public static final int ok=0x7f05000d;
+        public static final int reject=0x7f05001b;
+        public static final int reset=0x7f050005;
+        public static final int result_button=0x7f050019;
+        public static final int scan=0x7f05000b;
+        public static final int serialnumber=0x7f050015;
+        public static final int serialnumberlabel=0x7f050014;
+        public static final int skip=0x7f050013;
+        public static final int snappic=0x7f050010;
+        public static final int step1=0x7f050009;
+        public static final int step1popup=0x7f05000c;
+        public static final int step2=0x7f05000f;
+        public static final int success=0x7f050018;
+        public static final int tag_detected=0x7f050003;
+        public static final int visual_scan=0x7f05000e;
     }
     public static final class style {
         /** 

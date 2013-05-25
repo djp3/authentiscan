@@ -37,13 +37,13 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <Button
-                android:id="@+id/scan"
+                android:id="@+id/nfcnext"
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="80dip"
                 android:layout_marginRight="80dip"
-                android:text="@string/scan" />
+                android:text="@string/nfc_next" />
         </LinearLayout>
 
         <Button

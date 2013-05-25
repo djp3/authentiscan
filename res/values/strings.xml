@@ -4,6 +4,7 @@
     <string name="app_name">Authenti-Scan</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
+    <string name="tag_detected">Tag detected!</string>
     
     <string name="menu">Menu</string>
     <string name="reset">Reset</string>
@@ -12,6 +13,7 @@
     
     <string name="nfc_scan">1. NFC Scan</string>
     <string name="step1">Simply place the Bitcoin near the device and press Scan to begin.</string>
+    <string name="nfc_next">Next</string>
     <string name="scan">Scan</string>
     <string name="step1popup">NFC scan complete!</string>
     <string name="ok">OK</string>
