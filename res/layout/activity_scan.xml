@@ -65,37 +65,26 @@
             android:background="#FFFFFFFF"
             android:orientation="vertical" >
 
-            <SurfaceView
-                android:id="@+id/camerapreview"
-                android:layout_width="fill_parent"
-                android:layout_height="200dp"
-                android:layout_gravity="center"
-                android:gravity="center" />
-
-            <LinearLayout
-                android:id="@+id/panelSnappic1"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="#FFFFFFFF"
-                android:orientation="vertical" >
-
                 <Button
-                    android:id="@+id/snappic"
+                    android:id="@+id/scanqrcode"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="@string/snappic" />
+                    android:paddingTop="5dp"
+                    android:text="@string/scanqrcode" />
+
+                <TextView
+                    android:id="@+id/entermanually"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/entermanually" 
+                    android:textColor="#0000FF"/>
 
                 <LinearLayout
+                    android:id="@+id/serialinput"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal" >
-
-                    <TextView
-                        android:id="@+id/entermanually"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/entermanually" />
 
                     <EditText
                         android:id="@+id/entrytext"
@@ -103,8 +92,6 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:ems="10" >
-
-                        <requestFocus />
                     </EditText>
 
                     <Button
@@ -125,41 +112,6 @@
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:text="@string/skip" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/panelSnappic2"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="#FFFFFFFF"
-                android:orientation="vertical" >
-
-                <TextView
-                    android:id="@+id/label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dip"
-                    android:gravity="center"
-                    android:text="@string/serialnumberlabel" />
-
-                <TextView
-                    android:id="@+id/number"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dip"
-                    android:gravity="center"
-                    android:text="@string/serialnumber"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
-
-                <Button
-                    android:id="@+id/next"
-                    style="?android:attr/buttonStyleSmall"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:text="@string/next" />
-            </LinearLayout>
         </LinearLayout>
 
         <Button

@@ -5,6 +5,7 @@ import java.io.IOException;
 import com.example.accordionwidget.R;
 import android.os.Bundle;
 import android.app.Activity;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
@@ -12,6 +13,9 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 import android.view.LayoutInflater;
 import android.view.ViewGroup.LayoutParams;
 import android.view.inputmethod.InputMethodManager;
@@ -27,12 +31,7 @@ import android.hardware.Camera.Parameters;
 import android.hardware.Camera.PictureCallback;
 import android.hardware.Camera.ShutterCallback;
 
-public class ScanActivity extends Activity implements SurfaceHolder.Callback {
-	
-	private Camera camera;
-	private SurfaceView surfaceView;
-	private SurfaceHolder surfaceHolder;
-	private boolean previewing = false;
+public class ScanActivity extends Activity {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -41,13 +40,6 @@ public class ScanActivity extends Activity implements SurfaceHolder.Callback {
 	//	addListenerOnButton();
 		
 		getWindow().setFormat(PixelFormat.UNKNOWN);
-		surfaceView = (SurfaceView) findViewById(R.id.camerapreview);
-		surfaceHolder = surfaceView.getHolder();
-		surfaceHolder.addCallback(this);
-		surfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
-
-		// controlInflater = LayoutInflater.from(getBaseContext());
-		// View viewControl = controlInflater.inflate(R.layout.control, null);
 
 		Button btnNFC = (Button) findViewById(R.id.btnNFC);
 		btnNFC.setEnabled(false);
@@ -117,11 +109,8 @@ public class ScanActivity extends Activity implements SurfaceHolder.Callback {
 						View panelSettings = findViewById(R.id.panelVisual);
 						panelSettings.setVisibility(View.VISIBLE);
 						
-						View panelSnappic1 = findViewById(R.id.panelSnappic1);
-						panelSnappic1.setVisibility(View.VISIBLE);
-						
-						View panelSnappic2 = findViewById(R.id.panelSnappic2);
-						panelSnappic2.setVisibility(View.GONE);
+						View viewSerialInput = findViewById(R.id.serialinput);
+						viewSerialInput.setVisibility(View.GONE);
 
 						View panelPrivacy = findViewById(R.id.panelNetwork);
 						panelPrivacy.setVisibility(View.GONE);
@@ -129,58 +118,25 @@ public class ScanActivity extends Activity implements SurfaceHolder.Callback {
 						View panelResult = findViewById(R.id.panelResult);
 						panelResult.setVisibility(View.GONE);
 						
-						if (previewing) {
-							camera.stopPreview();
-							previewing = false;
-						}
-
-						if (camera != null) {
-							try {
-								camera.setPreviewDisplay(surfaceHolder);
-								camera.startPreview();
-								previewing = true;
-							} catch (IOException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-						}
-						
-						final ShutterCallback myShutterCallback = new ShutterCallback() {
-
-							@Override
-							public void onShutter() {
-								// TODO Auto-generated method stub
-
-							}
-						};
-
-						final PictureCallback myPictureCallback_RAW = new PictureCallback() {
-
-							@Override
-							public void onPictureTaken(byte[] arg0, Camera arg1) {
-								// TODO Auto-generated method stub
-
-							}
-						};
-
-						final PictureCallback myPictureCallback_JPG = new PictureCallback() {
-
-							@Override
-							public void onPictureTaken(byte[] arg0, Camera arg1) {
-								// TODO Auto-generated method stub
-								Bitmap bitmapPicture = BitmapFactory.decodeByteArray(arg0, 0,
-										arg0.length);
-							}
-						};
-						
-						Button buttonTakePicture = (Button) findViewById(R.id.snappic);
+						Button buttonTakePicture = (Button) findViewById(R.id.scanqrcode);
 						buttonTakePicture.setOnClickListener(new Button.OnClickListener() {
 
 							@Override
 							public void onClick(View arg0) {
-								// TODO Auto-generated method stub
-								camera.takePicture(myShutterCallback, myPictureCallback_RAW,
-										myPictureCallback_JPG);
+								Intent intent = new Intent("com.google.zxing.client.android.SCAN");
+			                    intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
+			                    startActivityForResult(intent, 0);
+
+							}
+						});
+						
+						TextView enterManually = (TextView) findViewById(R.id.entermanually);
+						enterManually.setOnClickListener(new View.OnClickListener() {
+
+							@Override
+							public void onClick(View arg0) {
+								View viewSerialInput = findViewById(R.id.serialinput);
+								viewSerialInput.setVisibility(View.VISIBLE);
 
 							}
 						});
@@ -191,48 +147,7 @@ public class ScanActivity extends Activity implements SurfaceHolder.Callback {
          
 		}});
 		/* STEP 2 */
-
-/*		btnVISUAL.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				// DO STUFF
-				View panelProfile = findViewById(R.id.panelNfc);
-				panelProfile.setVisibility(View.GONE);
-
-				View panelSettings = findViewById(R.id.panelVisual);
-				panelSettings.setVisibility(View.VISIBLE);
-				
-				View panelSnappic1 = findViewById(R.id.panelSnappic1);
-				panelSnappic1.setVisibility(View.VISIBLE);
-				
-				View panelSnappic2 = findViewById(R.id.panelSnappic2);
-				panelSnappic2.setVisibility(View.GONE);
-
-				View panelPrivacy = findViewById(R.id.panelNetwork);
-				panelPrivacy.setVisibility(View.GONE);
-				
-				View panelResult = findViewById(R.id.panelResult);
-				panelResult.setVisibility(View.GONE);
-			}
-		});	
-*/
-
-		
-		
-/*		OLD SNAPPIC (automatically shows serial number)
- * 		final Button snapPic = (Button) findViewById(R.id.snappic);
-		snapPic.setOnClickListener(new Button.OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				// add view for button
-				View panelSnappic1 = findViewById(R.id.panelSnappic1);
-				panelSnappic1.setVisibility(View.GONE);
-				
-				View panelSnappic2 = findViewById(R.id.panelSnappic2);
-				panelSnappic2.setVisibility(View.VISIBLE);     
-		}});
-*/		
+	
 		final Button visualScanEnter = (Button) findViewById(R.id.enter);
 		visualScanEnter.setOnClickListener(new Button.OnClickListener() {
 
@@ -244,25 +159,6 @@ public class ScanActivity extends Activity implements SurfaceHolder.Callback {
 				inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
                            InputMethodManager.HIDE_NOT_ALWAYS);
 				
-				View panelProfile = findViewById(R.id.panelNfc);
-				panelProfile.setVisibility(View.GONE);
-
-				View panelSettings = findViewById(R.id.panelVisual);
-				panelSettings.setVisibility(View.GONE);
-
-				View panelPrivacy = findViewById(R.id.panelNetwork);
-				panelPrivacy.setVisibility(View.VISIBLE);  
-				
-				View panelResult = findViewById(R.id.panelResult);
-				panelResult.setVisibility(View.GONE);
-		}});
-
-		final Button visualScanContinue = (Button) findViewById(R.id.next);
-		visualScanContinue.setOnClickListener(new Button.OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				// add view for button
 				View panelProfile = findViewById(R.id.panelNfc);
 				panelProfile.setVisibility(View.GONE);
 
@@ -314,25 +210,7 @@ public class ScanActivity extends Activity implements SurfaceHolder.Callback {
 				View panelResult = findViewById(R.id.panelResult);
 				panelResult.setVisibility(View.VISIBLE);
 		}});
-/*		btnNETWORK.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				// DO STUFF
-				View panelProfile = findViewById(R.id.panelNfc);
-				panelProfile.setVisibility(View.GONE);
 
-				View panelSettings = findViewById(R.id.panelVisual);
-				panelSettings.setVisibility(View.GONE);
-
-				View panelPrivacy = findViewById(R.id.panelNetwork);
-				panelPrivacy.setVisibility(View.VISIBLE);
-				
-				View panelResult = findViewById(R.id.panelResult);
-				panelResult.setVisibility(View.GONE);
-
-			}
-		});
-*/
 		final Button scanAccept = (Button) findViewById(R.id.accept);
 		scanAccept.setOnClickListener(new Button.OnClickListener() {
 
@@ -378,81 +256,30 @@ public class ScanActivity extends Activity implements SurfaceHolder.Callback {
 				panelResult.setVisibility(View.GONE);
 				
 		}});
-		
-		/* STEP 4 */
-		
-/*		btnRESULT.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				// DO STUFF
-				View panelProfile = findViewById(R.id.panelNfc);
-				panelProfile.setVisibility(View.GONE);
-
-				View panelSettings = findViewById(R.id.panelVisual);
-				panelSettings.setVisibility(View.GONE);
-
-				View panelPrivacy = findViewById(R.id.panelNetwork);
-				panelPrivacy.setVisibility(View.GONE);
-				
-				View panelResult = findViewById(R.id.panelResult);
-				panelResult.setVisibility(View.VISIBLE);
-
-			}
-		});	
-*/	
-		
 
 	}
 
-	@Override
-	public void surfaceChanged(SurfaceHolder holder, int format, int width,
-			int height) {
-		// TODO Auto-generated method stub
-		if (previewing) {
-			camera.stopPreview();
-			previewing = false;
-		}
-
-		if (camera != null) {
-			try {
-				camera.setPreviewDisplay(surfaceHolder);
-				camera.startPreview();
-				previewing = true;
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		
-	}
-
-	@Override
-	public void surfaceCreated(SurfaceHolder holder) {
-		// TODO Auto-generated method stub
-		camera = Camera.open();
-		Parameters params = camera.getParameters();
-
-		if (this.getResources().getConfiguration().orientation != Configuration.ORIENTATION_LANDSCAPE) {
-			params.set("orientation", "portrait");
-			camera.setDisplayOrientation(90);
-		}
-
-//		try {
-//			camera.setPreviewDisplay(holder);
-//			camera.startPreview();
-//		} catch (IOException exception) {
-//			camera.release();
-//			camera = null;
-//		}
-	}
-
-	@Override
-	public void surfaceDestroyed(SurfaceHolder holder) {
-		// TODO Auto-generated method stub
-		camera.stopPreview();
-		camera.release();
-		camera = null;
-		previewing = false;
-	}
+	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        if (requestCode == 0) {
+            if (resultCode == RESULT_OK) {
+                String contents = intent.getStringExtra("SCAN_RESULT");
+                String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
+                // Handle successful scan
+                TextView serialNumber = (TextView) findViewById(R.id.entrytext);
+                serialNumber.setText(contents);
+                
+                Toast toast = Toast.makeText(this, "Content:" + contents + " Format:" + format , Toast.LENGTH_LONG);
+                toast.setGravity(Gravity.TOP, 25, 400);
+                toast.show();
+                
+            } else if (resultCode == RESULT_CANCELED) {
+                // Handle cancel
+                Toast toast = Toast.makeText(this, "Scan was Cancelled!", Toast.LENGTH_LONG);
+                toast.setGravity(Gravity.TOP, 25, 400);
+                toast.show();
+                
+            }
+        }
+    }
 
 }
