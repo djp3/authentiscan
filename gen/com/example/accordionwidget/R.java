@@ -100,7 +100,8 @@ public final class R {
         public static final int activity_main=0x7f070000;
     }
     public static final class string {
-        public static final int PLACEHOLDER=0x7f05001e;
+        public static final int PLACEHOLDER_01=0x7f05001e;
+        public static final int PLACEHOLDER_02=0x7f05001f;
         public static final int about=0x7f050007;
         public static final int accept=0x7f05001a;
         public static final int app_name=0x7f050000;

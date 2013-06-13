@@ -38,7 +38,9 @@
 	
 	<string name="desc"></string>
 	
-	<string name="PLACEHOLDER">[[text place holder]]</string>
+	<string name="PLACEHOLDER_01">100 micro-bitcoin</string>
+	<string name="PLACEHOLDER_02">Authenti-Scan recommends accepting it</string>
+	
 	
 	<style name="ButtonText">
     <item name="android:layout_width">fill_parent</item>
