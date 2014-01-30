@@ -1,10 +1,17 @@
 package com.example.accordionwidget;
 
 import java.io.IOException;
+import java.nio.charset.Charset;
 
 import com.example.accordionwidget.R;
+
+import android.nfc.NfcAdapter;
+import android.nfc.Tag;
+import android.nfc.tech.MifareUltralight;
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.PendingIntent;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.SurfaceHolder;
@@ -22,6 +29,8 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.PopupWindow;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.IntentFilter.MalformedMimeTypeException;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -32,6 +41,12 @@ import android.hardware.Camera.PictureCallback;
 import android.hardware.Camera.ShutterCallback;
 
 public class ScanActivity extends Activity {
+    private PendingIntent mPendingIntent;
+    private IntentFilter[] mFilters;
+    private String[][] mTechLists;
+    private TextView mText;
+    private NfcAdapter mAdapter;
+    private View panelNFC;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -62,93 +77,83 @@ public class ScanActivity extends Activity {
 		View panelResult = findViewById(R.id.panelResult);
 		panelResult.setVisibility(View.GONE);
 		
+		mText = (TextView) findViewById(R.id.step1);
+        mAdapter = NfcAdapter.getDefaultAdapter(this);
+        mPendingIntent = PendingIntent.getActivity(this, 0,
+                new Intent(this, getClass()).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0);
+        IntentFilter ndef = new IntentFilter(NfcAdapter.ACTION_TECH_DISCOVERED);
+        try {
+            ndef.addDataType("*/*");
+        } catch (MalformedMimeTypeException e) {
+            throw new RuntimeException("fail", e);
+        }
+        mFilters = new IntentFilter[] {
+                ndef,
+        };
+        // Setup a tech list for all NfcF tags
+        mTechLists = new String[][] { new String[] { MifareUltralight.class.getName() } };
+		/* while (panelNFC is visible) {
+			enable nfc scanning
+			first display "Place coin near device to scan"
+			change text "Scanning..."
+			do the nfc stuff in background
+			
+		}*/
+		while (panelNFC.isShown()) {
+			//do stuff when visible
+	        Intent intent = getIntent();
+	        resolveIntent(intent);
+	        // add which code
+	        
+			final Button btnOpenPopup = (Button) findViewById(R.id.scan);
+			btnOpenPopup.setOnClickListener(new Button.OnClickListener() {
+
+				@Override
+				public void onClick(View arg0) {
+					LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
+					View popupView = layoutInflater.inflate(R.layout.popup, null);
+					final PopupWindow popupWindow = new PopupWindow(popupView,
+							LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+
+					Button btnDismiss = (Button) popupView
+							.findViewById(R.id.dismiss);
+					btnDismiss.setOnClickListener(new Button.OnClickListener() {
+
+						@Override
+						public void onClick(View v) {
+							// TODO Auto-generated method stub
+							popupWindow.dismiss();
+							View panelProfile = findViewById(R.id.panelNfc);
+							panelProfile.setVisibility(View.GONE);
+
+							View panelSettings = findViewById(R.id.panelVisual);
+							panelSettings.setVisibility(View.VISIBLE);
+
+							View panelPrivacy = findViewById(R.id.panelNetwork);
+							panelPrivacy.setVisibility(View.GONE);
+							
+							View panelResult = findViewById(R.id.panelResult);
+							panelResult.setVisibility(View.GONE);
+							
+							Button buttonTakePicture = (Button) findViewById(R.id.scanqrcode);
+							buttonTakePicture.setOnClickListener(new Button.OnClickListener() {
+
+								@Override
+								public void onClick(View arg0) {
+									Intent intent = new Intent("com.google.zxing.client.android.SCAN");
+				                    intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
+				                    startActivityForResult(intent, 0);
+								}
+							});
+						}
+					});
+	               popupWindow.showAsDropDown(btnOpenPopup, 50, -30);	         
+			}});
+		}
 		
-		// since buttons are no longer clickable, listeners are no longer needed
-		
-		/* STEP 1*/
-/*		btnNFC.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				// DO STUFF
-				View panelProfile = findViewById(R.id.panelNfc);
-				panelProfile.setVisibility(View.VISIBLE);
-
-				View panelSettings = findViewById(R.id.panelVisual);
-				panelSettings.setVisibility(View.GONE);
-
-				View panelPrivacy = findViewById(R.id.panelNetwork);
-				panelPrivacy.setVisibility(View.GONE);
-				
-				View panelResult = findViewById(R.id.panelResult);
-				panelResult.setVisibility(View.GONE);
-
-			}
-		});
-*/		
-		final Button btnOpenPopup = (Button) findViewById(R.id.scan);
-		btnOpenPopup.setOnClickListener(new Button.OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
-				View popupView = layoutInflater.inflate(R.layout.popup, null);
-				final PopupWindow popupWindow = new PopupWindow(popupView,
-						LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-
-				Button btnDismiss = (Button) popupView
-						.findViewById(R.id.dismiss);
-				btnDismiss.setOnClickListener(new Button.OnClickListener() {
-
-					@Override
-					public void onClick(View v) {
-						// TODO Auto-generated method stub
-						popupWindow.dismiss();
-						View panelProfile = findViewById(R.id.panelNfc);
-						panelProfile.setVisibility(View.GONE);
-
-						View panelSettings = findViewById(R.id.panelVisual);
-						panelSettings.setVisibility(View.VISIBLE);
-						
-						View viewSerialInput = findViewById(R.id.serialinput);
-						viewSerialInput.setVisibility(View.GONE);
-
-						View panelPrivacy = findViewById(R.id.panelNetwork);
-						panelPrivacy.setVisibility(View.GONE);
-						
-						View panelResult = findViewById(R.id.panelResult);
-						panelResult.setVisibility(View.GONE);
-						
-						Button buttonTakePicture = (Button) findViewById(R.id.scanqrcode);
-						buttonTakePicture.setOnClickListener(new Button.OnClickListener() {
-
-							@Override
-							public void onClick(View arg0) {
-								Intent intent = new Intent("com.google.zxing.client.android.SCAN");
-			                    intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
-			                    startActivityForResult(intent, 0);
-
-							}
-						});
-						
-						TextView enterManually = (TextView) findViewById(R.id.entermanually);
-						enterManually.setOnClickListener(new View.OnClickListener() {
-
-							@Override
-							public void onClick(View arg0) {
-								View viewSerialInput = findViewById(R.id.serialinput);
-								viewSerialInput.setVisibility(View.VISIBLE);
-
-							}
-						});
-						
-					}
-				});
-               popupWindow.showAsDropDown(btnOpenPopup, 50, -30);
-         
-		}});
 		/* STEP 2 */
 	
-		final Button visualScanEnter = (Button) findViewById(R.id.enter);
+		final Button visualScanEnter = (Button) findViewById(R.id.scanqrcode);
 		visualScanEnter.setOnClickListener(new Button.OnClickListener() {
 
 			@Override
@@ -256,7 +261,6 @@ public class ScanActivity extends Activity {
 				panelResult.setVisibility(View.GONE);
 				
 		}});
-
 	}
 
 	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
@@ -265,8 +269,10 @@ public class ScanActivity extends Activity {
                 String contents = intent.getStringExtra("SCAN_RESULT");
                 String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
                 // Handle successful scan
-                TextView serialNumber = (TextView) findViewById(R.id.entrytext);
-                serialNumber.setText(contents);
+                //TextView serialNumber = (TextView) findViewById(R.id.entrytext);
+                //serialNumber.setText(contents);
+                
+                // maybe show a picture instead
                 
                 Toast toast = Toast.makeText(this, "Content:" + contents + " Format:" + format , Toast.LENGTH_LONG);
                 toast.setGravity(Gravity.TOP, 25, 400);
@@ -280,6 +286,50 @@ public class ScanActivity extends Activity {
                 
             }
         }
+    }
+	
+	void resolveIntent(Intent intent) {
+        String action = intent.getAction();
+        // Check if triggered by tag
+        if (NfcAdapter.ACTION_TECH_DISCOVERED.equals(action)) {
+            // Get TAG instance
+            Tag tagFromIntent = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
+            // Get Mifare from tag instance above
+            MifareUltralight mfc = MifareUltralight.get(tagFromIntent);
+            try {
+				mfc.connect();
+				// read byte pages 5-8 
+	            byte[] payload = mfc.readPages(5);
+	            String Payload2String = new String(payload, Charset.forName("US-ASCII")).trim();
+                Log.e("NFC payload", Payload2String);
+	            System.out.println(Payload2String);
+	            mText.setText(Payload2String);
+	            // once NFC payload is set to text, turn off the panel
+	            //panelNFC.setVisibility(View.GONE);
+	            
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}       
+            }   
+    }
+	
+	@Override
+    public void onResume() {
+        super.onResume();
+        mAdapter.enableForegroundDispatch(this, mPendingIntent, mFilters, mTechLists);
+    }
+    // this works 
+    @Override
+    public void onNewIntent(Intent intent) {
+        Log.i("Foreground dispatch", "Discovered tag with intent: " + intent);
+        resolveIntent(intent);           
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mAdapter.disableForegroundDispatch(this);
     }
 
 }

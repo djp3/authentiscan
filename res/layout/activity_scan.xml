@@ -73,37 +73,6 @@
                     android:paddingTop="5dp"
                     android:text="@string/scanqrcode" />
 
-                <TextView
-                    android:id="@+id/entermanually"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/entermanually" 
-                    android:textColor="#0000FF"/>
-
-                <LinearLayout
-                    android:id="@+id/serialinput"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal" >
-
-                    <EditText
-                        android:id="@+id/entrytext"
-                        android:layout_width="0dip"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:ems="10" >
-                    </EditText>
-
-                    <Button
-                        android:id="@+id/enter"
-                        style="?android:attr/buttonStyleSmall"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:text="@string/enter" />
-                </LinearLayout>
-
                 <Button
                     android:id="@+id/skip"
                     style="?android:attr/buttonStyleSmall"

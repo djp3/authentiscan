@@ -1,15 +1,19 @@
 package com.example.accordionwidget;
  
+import android.app.PendingIntent;
 import android.app.TabActivity;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.res.Resources;
+import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.view.Window;
 import android.widget.TabHost;
+import android.widget.TextView;
 import android.widget.TabHost.TabSpec;
  
 public class MainActivity extends TabActivity {
- 
+    
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
