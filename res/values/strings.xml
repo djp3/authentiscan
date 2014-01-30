@@ -19,9 +19,8 @@
     <string name="ok">OK</string>
     
     <string name="visual_scan">2. Visual Scan</string>
-    <string name="step2">[INSERT PICTURE]</string>
-    <string name="snappic">SNAP PICTURE!</string>
-    <string name="entermanually">Input serial number:</string>
+    <string name="scanqrcode">Scan QR Code</string>
+    <string name="entermanually"><u>Input serial number:</u></string>
     <string name="enter">Enter</string>
     <string name="skip">Skip</string>
     <string name="serialnumberlabel">Serial Number:</string>

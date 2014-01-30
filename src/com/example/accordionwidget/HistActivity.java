@@ -35,7 +35,7 @@ public class HistActivity extends Activity {
 				@Override
 				public void onClick(View arg0) {
 
-				    Intent intent = new Intent(context, MainActivity.class);
+				    Intent intent = new Intent(context, ScanActivity.class);
 		                        startActivity(intent);   
 				}
 			});
